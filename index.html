@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue dengan Tombol</title>
+
+  <!-- Menggunakan Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+  <!-- Styling CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #app {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .counter {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .counter-btn {
+      background-color: #2196F3;
+    }
+
+    .counter-btn:hover {
+      background-color: #1976D2;
+    }
+
+    .navigate {
+      background-color: #FF9800;
+      display: block;
+      width: 100%;
+    }
+
+    .navigate:hover {
+      background-color: #FB8C00;
+    }
+  </style>
+  
+  <!-- Import Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Prediksi Jumlah Gol Indonesia</h1>
+    <p>Indonesia vs Jepang</p>
+    <div class="counter"> {{ counter }}</div>
+
+    <!-- Container untuk tombol + dan - -->
+    <div class="button-container">
+      <button class="counter-btn" @click="decrement">-</button>
+      <button class="counter-btn" @click="increment">+</button>
+    </div>
+
+    <!-- Tombol Navigasi ke halaman info pertandingan -->
+    <button class="navigate" @click="goToPage">Pencet utk Info Pertandingan</button>
+  </div>
+  
+  <script>
+    const { createApp } = Vue
+    
+    createApp({
+      data() {
+        return {
+          counter: 0  // Variabel untuk menghitung angka
+        }
+      },
+      methods: {
+        increment() {
+          this.counter += 1;  // Menambah angka
+        },
+        decrement() {
+          // Memastikan nilai tidak kurang dari 0
+          if (this.counter > 0) {
+            this.counter -= 1;  // Mengurangi angka
+          }
+        },
+        goToPage() {
+          // Ganti URL sesuai dengan halaman yang ingin dituju
+          window.location.href = 'https://www.google.com/search?q=indonesia+vs+jepang&oq=indonesia+vs+jepang&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORiDARixAxiABDINCAEQABiDARixAxiABDINCAIQABiDARixAxiABDINCAMQABiDARixAxiABDIKCAQQABixAxiABDIHCAUQABiABDIQCAYQABiDARixAxiABBiKBTINCAcQABiDARixAxiABDINCAgQABiDARixAxiABDIQCAkQABiDARixAxiABBiKBdIBCDQxMjNqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8#sie=m;/g/11w42l5tpy;2;/g/11b5lvx2qt;dt;fp;1;;;';
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
